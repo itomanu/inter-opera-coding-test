@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.pyo
+*.pyd
+*.pyc
+*.pyd
+*.whl
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+env.bak/
+venv.bak/
+
+# FastAPI + Starlette static & media (if used)
+staticfiles/
+mediafiles/
+
+# dotenv environment files
+.env
+.env.*
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS Finder/Spotlight files
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# MyPy
+.mypy_cache/
+
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+coverage.xml
+
+# Logs
+*.log
+
+# Pydantic compiled schema cache (optional)
+.pdm.toml
+__pydantic__/ 
+
+# Docker
+*.pid
+docker-compose.override.yml
