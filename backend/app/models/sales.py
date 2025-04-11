@@ -31,5 +31,5 @@ class SalesRep(BaseModel):
     clients: List[Client]
 
 
-class SalesData(BaseModel):
+class SalesRepList(BaseModel):
     salesReps: List[SalesRep]
