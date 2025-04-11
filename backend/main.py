@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import json
+import schemas
 
 app = FastAPI()
 app.add_middleware(
@@ -16,12 +17,12 @@ app.add_middleware(
 with open("dummyData.json", "r") as f:
     DUMMY_DATA = json.load(f)
 
-@app.get("/api/data")
+@app.get("/api/data", response_model=schemas.SalesData)
 def get_data():
     """
-    Returns dummy data (e.g., list of users).
+    Returns list of sales data.
     """
-    return DUMMY_DATA
+    return schemas.SalesData(**DUMMY_DATA)
 
 @app.post("/api/ai")
 async def ai_endpoint(request: Request):
