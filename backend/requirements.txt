@@ -1,3 +1,6 @@
 fastapi
 uvicorn
 email_validator
+google-genai
+openai
+python-dotenv
