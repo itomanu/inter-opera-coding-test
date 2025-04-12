@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white antialiased`}
       >
-        <div className="flex">
+        <div className="flex min-h-screen">
           <Sidebar>
             <SidebarItem
               icon={<LayoutDashboard size={20} />}
@@ -42,7 +42,9 @@ export default function RootLayout({
               text="AskBot"
             />
           </Sidebar>
-          {children}
+          <div className="flex-grow bg-gray-50">
+            {children}
+          </div>
         </div>
       </body>
     </html>

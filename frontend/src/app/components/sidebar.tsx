@@ -23,8 +23,8 @@ export function Sidebar({
   const [expanded, setExpanded] = useState(true)
 
   return (
-    <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-white shadow-sm">
+    <aside>
+      <nav className="h-full flex flex-col bg-white shadow-sm border-r-gray-100 border-r-2">
         <div className="p-4 pb-2 flex justify-between items-center">
           <img
             src="/greensales.svg"
@@ -59,8 +59,8 @@ export function SidebarItem({
         relative flex items-center py-2 px-2 my-1 font-medium
         rounded-md cursor-pointer transition-colors group
         ${pathname == link
-          ? "bg-green-200 text-green-800"
-          : "hover:bg-green-50 text-gray-600"
+          ? "bg-emerald-200 text-emerald-800"
+          : "hover:bg-emerald-50 text-gray-600"
         }`}>
         {icon}
 
@@ -70,7 +70,7 @@ export function SidebarItem({
         {!expanded && (
           <div
             className={`absolute left-full rounded-md px-2 py-1 ml-6
-            bg-green-100 text-green-800 text-sm
+            bg-emerald-100 text-emerald-800 text-sm
             invisible opacity-20 -translate-x-3 transition-all
             group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
           `}
