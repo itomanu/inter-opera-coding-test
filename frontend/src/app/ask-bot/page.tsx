@@ -1,41 +1,49 @@
 'use client'
 
-import { useState } from "react";
-import { LoadingBubble, MessageBubble, MessageProps } from "../components/message-bubble";
-import { sendQuestion } from "./ai-service";
+import { useState, useEffect, useRef } from "react"
+import { LoadingBubble, MessageBubble, MessageProps } from "../components/message-bubble"
+import { sendQuestion } from "./ai-service"
 
 export default function AskBotPage() {
   const [messages, setMessages] = useState<MessageProps[]>([])
   const [input, setInput] = useState("")
   const [loading, setLoading] = useState(false)
 
+  const bottomRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages, loading])
+
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const handleSend = async () => {
-    if (input.trim() === "") return
+    if (loading || input.trim() === "") return
 
     setMessages((prev) => [...prev, {
       type: "question",
       text: input
     }])
+    setInput("")
     setLoading(true)
 
     try {
-      const answer = await sendQuestion(input);
-      const botMessage: MessageProps = { type: "answer", text: answer };
-      setMessages((prev) => [...prev, botMessage]);
-      setInput("")
+      const answer = await sendQuestion(input)
+      const botMessage: MessageProps = { type: "answer", text: answer }
+      setMessages((prev) => [...prev, botMessage])
     } catch (err) {
       setMessages((prev) => [...prev, {
         type: "error",
         text: "‼️ Oops! Failed to get a response. Try again later.",
-      }]);
+      }])
     } finally {
-      setLoading(false);
+      setLoading(false)
+      inputRef.current?.focus()
     }
-  };
+  }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") handleSend();
-  };
+    if (e.key === "Enter") handleSend()
+  }
 
   return (
     <div className="flex flex-col h-full max-h-screen p-8">
@@ -55,16 +63,18 @@ export default function AskBotPage() {
             ))}
 
             {loading && <LoadingBubble text="Bot is typing..." />}
+
+            <div ref={bottomRef} />
           </div>
           <div className="p-4 flex items-center gap-2 border-t border-gray-200">
             <input
+              ref={inputRef}
               type="text"
               className="flex-1 border rounded-sm px-4 py-2 outline-none border-gray-300"
               placeholder="Ask me anything..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
-              disabled={loading}
             />
             <button
               onClick={handleSend}
