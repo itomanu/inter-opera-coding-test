@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { LoadingBubble, MessageBubble, MessageProps } from "@/components/MessageBubble"
 import { sendQuestion } from "./ai-service"
+import { SendHorizonal } from "lucide-react"
 
 export default function AskBotPage() {
   const [messages, setMessages] = useState<MessageProps[]>([])
@@ -80,7 +81,7 @@ export default function AskBotPage() {
               onClick={handleSend}
               className="cursor-pointer bg-emerald-500 text-white px-4 py-2 rounded-sm hover:bg-emerald-600"
             >
-              Send
+              <SendHorizonal width={18} />
             </button>
           </div>
         </div>
