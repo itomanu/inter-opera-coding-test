@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from "react"
-import { LoadingBubble, MessageBubble, MessageProps } from "../components/message-bubble"
+import { LoadingBubble, MessageBubble, MessageProps } from "@/components/MessageBubble"
 import { sendQuestion } from "./ai-service"
 
 export default function AskBotPage() {
@@ -70,7 +70,7 @@ export default function AskBotPage() {
             <input
               ref={inputRef}
               type="text"
-              className="flex-1 border rounded-sm px-4 py-2 outline-none border-gray-300"
+              className="flex-1 border rounded-sm px-4 py-2 outline-none border-gray-300 w-0"
               placeholder="Ask me anything..."
               value={input}
               onChange={(e) => setInput(e.target.value)}

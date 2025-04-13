@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '@/app/lib/constants'
+import { API_BASE_URL } from '@/lib/constants'
 
 export const sendQuestion = async (question: string): Promise<string> => {
   const res = await fetch(`${API_BASE_URL}/ai`, {

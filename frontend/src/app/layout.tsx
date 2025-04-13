@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
-import { Sidebar, SidebarItem } from "./components/sidebar";
+import { Sidebar, SidebarItem } from "@/components/Sidebar";
 import { BotMessageSquare, LayoutDashboard } from "lucide-react";
+import { SidebarProvider } from "@/context/SidebarContext";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -29,23 +30,25 @@ export default function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white antialiased`}
       >
-        <div className="flex min-h-screen">
-          <Sidebar>
-            <SidebarItem
-              icon={<LayoutDashboard size={20} />}
-              link="/"
-              text="Dashboard"
-            />
-            <SidebarItem
-              icon={<BotMessageSquare size={20} />}
-              link="/ask-bot"
-              text="AskBot"
-            />
-          </Sidebar>
-          <div className="flex-grow bg-gray-50">
-            {children}
+        <SidebarProvider>
+          <div className="flex min-h-screen">
+            <Sidebar>
+              <SidebarItem
+                icon={<LayoutDashboard size={20} />}
+                link="/"
+                text="Dashboard"
+                />
+              <SidebarItem
+                icon={<BotMessageSquare size={20} />}
+                link="/ask-bot"
+                text="AskBot"
+                />
+            </Sidebar>
+            <div className="flex-grow bg-gray-50">
+              {children}
+            </div>
           </div>
-        </div>
+        </SidebarProvider>
       </body>
     </html>
   );

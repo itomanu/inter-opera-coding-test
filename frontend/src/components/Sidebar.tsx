@@ -1,8 +1,9 @@
 'use client'
 
+import { useSidebar } from "@/context/SidebarContext"
 import { SidebarClose, SidebarOpen } from "lucide-react"
 import { usePathname } from "next/navigation"
-import { createContext, useContext, useState } from "react"
+
 
 export type SidebarProps = {
   children: React.ReactNode
@@ -15,12 +16,10 @@ export type SidebarItemProps = {
   active?: boolean
 }
 
-const SidebarContext = createContext(true)
-
 export function Sidebar({
   children
 }: SidebarProps) {
-  const [expanded, setExpanded] = useState(true)
+  const { isExpanded, toggleSidebar } = useSidebar();
 
   return (
     <aside>
@@ -29,19 +28,17 @@ export function Sidebar({
           <img
             src="/greensales.svg"
             alt="logo"
-            className={`overflow-hidden transition-all ${expanded ? "w-32" : "w-0"}`}
+            className={`overflow-hidden transition-all ${isExpanded ? "w-32" : "w-0"}`}
           />
           <button
-            onClick={() => setExpanded(curr => !curr)}
+            onClick={() => toggleSidebar()}
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100 cursor-pointer"
           >
-            {expanded ? <SidebarClose /> : <SidebarOpen />}
+            {isExpanded ? <SidebarClose /> : <SidebarOpen />}
           </button>
         </div>
 
-        <SidebarContext.Provider value={expanded}>
-          <ul className="flex-1 px-3">{children}</ul>
-        </SidebarContext.Provider>
+        <ul className="flex-1 px-3">{children}</ul>
       </nav>
     </aside>
   )
@@ -50,7 +47,7 @@ export function Sidebar({
 export function SidebarItem({
   icon, link, text, active
 }: SidebarItemProps) {
-  const expanded = useContext(SidebarContext)
+  const { isExpanded } = useSidebar();
   const pathname = usePathname()
 
   return (
@@ -65,9 +62,9 @@ export function SidebarItem({
         {icon}
 
         <span className={
-          `overflow-hidden ${expanded ? "w-52 ml-3" : "w-0"}`
+          `overflow-hidden ${isExpanded ? "w-52 ml-3" : "w-0"}`
         }>{text}</span>
-        {!expanded && (
+        {!isExpanded && (
           <div
             className={`absolute left-full rounded-md px-2 py-1 ml-6
             bg-emerald-100 text-emerald-800 text-sm
