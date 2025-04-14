@@ -13,7 +13,8 @@
         ],
         "clients": [
           { "name": "Acme Corp", "industry": "Manufacturing", "contact": "alice@acmecorp.com" },
-          { "name": "Beta Ltd", "industry": "Retail", "contact": "contact@betaltd.com" }
+          { "name": "Beta Ltd", "industry": "Retail", "contact": "contact@betaltd.com" },
+          { "name": "Omega Inc", "industry": "Retail", "contact": "sales@omega.com" }
         ]
       },
       {
@@ -21,7 +22,7 @@
         "name": "Bob",
         "role": "Sales Representative",
         "region": "Europe",
-        "skills": ["Lead Generation", "Presentation", "Negotiation"],
+        "skills": ["Lead Generation", "Presentation", "Negotiation", "Relationship Building"],
         "deals": [
           { "client": "Gamma Inc", "value": 75000, "status": "Closed Lost" },
           { "client": "Delta LLC", "value": 90000, "status": "Closed Won" },
@@ -29,7 +30,8 @@
         ],
         "clients": [
           { "name": "Gamma Inc", "industry": "Tech", "contact": "info@gammainc.com" },
-          { "name": "Delta LLC", "industry": "Finance", "contact": "support@deltallc.com" }
+          { "name": "Delta LLC", "industry": "Finance", "contact": "support@deltallc.com" },
+          { "name": "Sigma Corp", "industry": "Telecommunications", "contact": "sales@sigma-corp.com" }
         ]
       },
       {
@@ -37,7 +39,7 @@
         "name": "Charlie",
         "role": "Account Manager",
         "region": "Asia-Pacific",
-        "skills": ["Customer Service", "Sales Strategy", "Data Analysis"],
+        "skills": ["Customer Service", "Sales Strategy", "Data Analysis", "Presentation", "CRM"],
         "deals": [
           { "client": "Epsilon Ltd", "value": 110000, "status": "In Progress" },
           { "client": "Zeta Corp", "value": 60000, "status": "Closed Won" },
@@ -45,7 +47,9 @@
         ],
         "clients": [
           { "name": "Epsilon Ltd", "industry": "Healthcare", "contact": "contact@epsilonltd.com" },
-          { "name": "Zeta Corp", "industry": "Finance", "contact": "sales@zetacorp.com" }
+          { "name": "Zeta Corp", "industry": "Finance", "contact": "sales@zetacorp.com" },
+          { "name": "Theta Enterprises", "industry": "Telecommunications", "contact": "sales@theta.com" },
+          { "name": "Alpha Inc", "industry": "Energy", "contact": "hi@alpha-inc.com" }
         ]
       },
       {
@@ -61,7 +65,8 @@
         ],
         "clients": [
           { "name": "Eta Co", "industry": "Energy", "contact": "info@etaco.com" },
-          { "name": "Theta Inc", "industry": "Telecommunications", "contact": "sales@thetainc.com" }
+          { "name": "Theta Inc", "industry": "Telecommunications", "contact": "sales@thetainc.com" },
+          { "name": "Iota Group", "industry": "Retail", "contact": "hi@iota-group.com" }
         ]
       },
       {
@@ -69,7 +74,7 @@
         "name": "Eve",
         "role": "Regional Sales Manager",
         "region": "Middle East",
-        "skills": ["Relationship Building", "Negotiation", "Market Expansion"],
+        "skills": ["Relationship Building", "Negotiation", "Market Expansion", "Strategic Partnerships"],
         "deals": [
           { "client": "Iota Ltd", "value": 95000, "status": "Closed Won" },
           { "client": "Kappa LLC", "value": 45000, "status": "In Progress" },
@@ -77,7 +82,10 @@
         ],
         "clients": [
           { "name": "Iota Ltd", "industry": "Hospitality", "contact": "contact@iotaltd.com" },
-          { "name": "Kappa LLC", "industry": "Retail", "contact": "info@kappallc.com" }
+          { "name": "Kappa LLC", "industry": "Retail", "contact": "info@kappallc.com" },
+          { "name": "Lambda Partners", "industry": "Tech", "contact": "info@lambda-partners.com" },
+          { "name": "Etha Inc", "industry": "Telecommunications", "contact": "info@etha-inc.com" },
+          { "name": "Lucas Corp", "industry": "Energy", "contact": "info@lucas-corp.com" }
         ]
       }
     ]
