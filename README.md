@@ -36,7 +36,7 @@ You will parse the provided **`dummyData.json`** and render its nested structure
    - Simple chat interface to ask questions.
    - Fetches answers from an API (AI response).
    - Loading state, auto-scroll, and input focus management.
-   - Animated typewriter effect to simulate live response.
+   - Support Markdown formatting.
 
 #### Tech Stack
 
