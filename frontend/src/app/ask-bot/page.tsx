@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { LoadingBubble, MessageBubble, MessageProps } from "@/components/MessageBubble"
-import { sendQuestion } from "./ai-service"
+import { sendQuestion } from "@/services/api-service"
 import { SendHorizonal } from "lucide-react"
 
 export default function AskBotPage() {
@@ -47,7 +47,7 @@ export default function AskBotPage() {
   }
 
   return (
-    <div className="flex flex-col h-full max-h-screen p-8">
+    <div className="flex flex-col h-full max-h-screen p-3 sm:p-8">
       <div className="pb-4">
         <h1 className="font-bold text-2xl">AskBot</h1>
         <p className="font-light text-sm italic text-gray-600">If you don't ask, you don't get.</p>

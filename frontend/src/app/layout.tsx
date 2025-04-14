@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geist.variable} ${geistMono.variable} bg-white antialiased`}
       >
         <SidebarProvider>
-          <div className="flex min-h-screen">
+          <div className="flex h-screen">
             <Sidebar>
               <SidebarItem
                 icon={<LayoutDashboard size={20} />}
@@ -44,7 +44,7 @@ export default function RootLayout({
                 text="AskBot"
                 />
             </Sidebar>
-            <div className="flex-grow bg-gray-50">
+            <div className="flex-grow bg-gray-50 overflow-y-auto">
               {children}
             </div>
           </div>
