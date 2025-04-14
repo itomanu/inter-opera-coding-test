@@ -19,7 +19,10 @@ export function MessageBubble({
         ? "bg-emerald-200 text-emerald-800"
         : isError ? "bg-red-200 text-red-800" : "bg-gray-200 text-black"
         }`}>
-        <ReactMarkdown>{text}</ReactMarkdown>
+        {!isQuestion && (
+          <ReactMarkdown>{text}</ReactMarkdown>
+        )}
+        {isQuestion && (text)}
       </div>
     </div>
   )
