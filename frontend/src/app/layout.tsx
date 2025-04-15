@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
 import { Sidebar, SidebarItem } from "@/components/Sidebar";
@@ -18,6 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "GreenSales",
   description: "Inter Opera Coding Test",
+  manifest: "manifest.json"
 };
 
 export default function RootLayout({
@@ -27,6 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white antialiased`}
       >

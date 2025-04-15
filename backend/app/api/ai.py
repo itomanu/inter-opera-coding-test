@@ -5,7 +5,7 @@ from app.services.llm_handler import SUPPORTED_LLM, common
 router = APIRouter()
 
 @router.post("/", response_model=AIResponse)
-async def ai_endpoint(request: AIRequest):
+def ai_endpoint(request: AIRequest):
     """
     Accepts a user question and returns a placeholder AI response.
     """

@@ -8,6 +8,8 @@ Your task is to build a simple, full-stack application featuring:
 
 # GreenSales Project
 
+![GreenSales Logo](/frontend/public/greensales.svg)
+
 The project is called GreenSales — just a randomly chosen name.
 
 ## Features
