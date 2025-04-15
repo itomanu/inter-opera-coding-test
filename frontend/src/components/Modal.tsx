@@ -29,14 +29,16 @@ export function Modal({
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 shadow-md">
       <div
         ref={modalRef}
-        className="bg-white rounded-lg w-full max-w-lg p-6 relative">
+        className="bg-white rounded-lg relative w-[90%] max-w-md mx-auto shadow-lg">
         <button
-          className="absolute top-3 right-3 text-gray-500 hover:text-black cursor-pointer"
+          className="absolute top-3 right-3 text-gray-500 hover:text-black cursor-pointer z-10"
           onClick={() => onClose()}
         >
           <X />
         </button>
-        {children}
+        <div className="p-6 pt-12 max-h-[80vh] overflow-y-auto">
+          {children}
+        </div>
       </div>
     </div>
   )

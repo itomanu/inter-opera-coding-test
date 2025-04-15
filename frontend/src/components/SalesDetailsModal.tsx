@@ -77,30 +77,36 @@ export function SalesDetailsModal({
 
         <div className="flex flex-col gap-1">
           <h3 className="font-medium">Clients</h3>
-          <table>
-            <tbody className="divide-y divide-gray-100">
-              {data.clients.map((client, i) => (
-                <tr key={i}>
-                  <td className="p-2 py-1 text-sm">
-                    <div className="flex flex-row gap-1">
+          <div className="flex flex-col">
+            {data.clients.map((client, i) => (
+              <div key={i}>
+                <div className="flex flex-row justify-between">
+                  <div className="p-2 py-1 text-sm">
+                    <div className="flex flex-row gap-1 items-center">
                       <ClientItem
                         background="random"
                         text={client.name.split(" ").map(s => s.charAt(0)).join("")} />
                       <div className="flex flex-col gap-1">
                         <p>{client.name}</p>
                         <p className="text-xs text-gray-500">{client.industry}</p>
+                        <a
+                          className="underline text-emerald-700 text-xs italic hover:text-emerald-900 inline-block sm:hidden"
+                          href={`mailto:${client.contact}`}>{client.contact}</a>
                       </div>
                     </div>
-                  </td>
-                  <td className="p-2 py-1 text-sm text-end">
+                  </div>
+                  <div className="p-2 py-1 text-sm hidden sm:inline-block">
                     <a
                       className="underline text-emerald-700 italic hover:text-emerald-900"
                       href={`mailto:${client.contact}`}>{client.contact}</a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  </div>
+                </div>
+                {i < data.clients.length - 1 && (
+                  <div className="h-px w-full bg-gray-200 my-1" />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Modal>

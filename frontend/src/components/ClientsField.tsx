@@ -53,7 +53,7 @@ export function ClientItem({
       : background
 
   return (
-    <div className={`${ml} ${bg} min-w-10 min-h-10 rounded-full text-sm flex items-center justify-center font-medium border-2 border-white`}>
+    <div className={`${ml} ${bg} w-10 h-10 rounded-full text-sm flex items-center justify-center font-medium border-2 border-white`}>
       {text}
     </div>
   )
