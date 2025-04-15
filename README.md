@@ -6,121 +6,159 @@ Your task is to build a simple, full-stack application featuring:
 2. **FastAPI** as the backend API layer.
 3. **Dummy JSON Data** (provided) with sales-related information.
 
-You will parse the provided **`dummyData.json`** and render its nested structures in a user-friendly interface. Optionally, you may include a simple AI feature as a bonus.
+# GreenSales Project
 
----
+The project is called GreenSales — just a randomly chosen name.
 
-### Backend (FastAPI)
+## Features
 
-#### API Features
-- Sales data from dummyData
-- Integrates with Gemini AI (and deepseek) to provide intelligent answers to user questions.
-- Dummy data was updated to:
-  - Include more diverse skills for better UI/UX testing.
-  - Expand client lists per sales rep to stress-test the display logic.
+- 📊 Sales data visualization and management
+- 🤖 AI-powered insights using Google's Gemini API
+- 🎨 Modern, responsive UI with Tailwind CSS
+- 📱 Mobile-friendly interface
 
----
+## Tech Stack
 
-### Frontend (Next.js)
+### Frontend
+- Next.js 15.3.0
+- React 19
+- TypeScript
+- Tailwind CSS
+- Lucide React (for icons)
+- React Markdown
 
-#### Features
+### Backend
+- FastAPI
+- Python 3.x
+- Google Gemini AI
+- Uvicorn (ASGI server)
 
-1. **Sales Dashboard**
-   - Displays a list of sales representatives with clients and deals data.
-   - Sortable columns with ascending/descending toggling.
-   - Responsive layout with optimized UI for both mobile and desktop.
-   - Includes interactive deal statistics and skill summaries.
-   - Avatar group indicators with overlap and "+X" badge for overflow.
+## Prerequisites
 
-2. **AskBot (AI Chat UI)**
-   - Simple chat interface to ask questions.
-   - Fetches answers from an API (AI response).
-   - Loading state, auto-scroll, and input focus management.
-   - Support Markdown formatting.
+- Node.js (v18 or higher)
+- Python 3.8 or higher
+- npm or yarn
+- pip
 
-#### Tech Stack
+## Setup Instructions
 
-- **Next.js**
-- **TypeScript**
-- **Tailwind CSS**
-- **Lucide-react** (icons)
-- **React Markdown** (for rendering bot answers)
-- **[Pravatar.cc](https://pravatar.cc/)** (for dummy avatar)
+### Backend Setup
 
-#### Architecture & Design Choices
-
-- **Modular File Structure**: Pages, components, and utilities are organized under `src/app`, `src/components`, `src/context`, `src/lib` and `src/services`.
-- **Separation of Concerns**: API logic is abstracted into `api-service.ts`.
-- **Reusability**: Components like `MessageBubble`, `Sidebar`, and `DealStatsCard` are reusable and self-contained.
-- **Responsiveness**: Layout is mobile-first and adapts fluidly to screen sizes.
-- **User Experience**: Focused on clean interactions, visual clarity, and feedback (e.g., scroll behavior, loading indicators).
-
----
-
-## Getting Started
-
-1. **Clone the repository**
-
-```bash
-git https://github.com/itomanu/inter-opera-coding-test
-cd inter-opera-coding-test
-```
-
-2. **Backend Setup**
-   - Navigate to the `backend` directory.
-   - Create a virtual environment (optional but recommended).
-   - Install dependencies:
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - Run the server:
-     ```bash
-     uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-     ```  
-   - Confirm the API works by visiting `http://localhost:8000/docs`.
-
-3. **Frontend Setup**  
-   - Navigate to the `frontend` directory.  
-   - Install dependencies:  
-     ```bash
-     npm install
-     ```  
-   - Start the development server:
-     ```bash
-     npm run dev
-     ```
-   - Open `http://localhost:3000` to view the app.
-
-4. **Environtment Setup**  
-   - The backend requires a `GEMINI_API_KEY` to access the Gemini API. You need to define this in a `.env` file within the backend directory.
-   - The frontend uses the `NEXT_PUBLIC_API_BASE_URL` environment variable to identify the API base URL. You might need to define this in `.env.local` file inside the frontend directory.
-
-5. **Use Deepseek AI**
-   - The backend is designed to support additional LLM providers besides Gemini. You can use Deepseek if you have an API key and sufficient credits.
-   - Define `DEEPSEEK_API_KEY` in the `.env` file
-   - Add deepseek to `SUPPORTED_LLM` on `services/llm_handler/__init__.py`:
-   ```python
-    SUPPORTED_LLM = {
-        "gemini": GeminiHandler(),
-        "deepseek": DeepseekHandler(),
-    }
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
    ```
-   - To use Deepseek in `api/ai.py`, update the handler selection:
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Create a `.env` file with the following variables:
+   ```
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+4. Start the backend server:
+   ```bash
+   python main.py
+   ```
+   The server will start at `http://localhost:8000`
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Create a `.env.local` file with:
+   ```
+   NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   The frontend will be available at `http://localhost:3000`
+
+## Use Deepseek AI
+1. The backend is designed to support additional LLM providers besides Gemini. You can use Deepseek if you have an API key and enough credits.
+
+2. Add `DEEPSEEK_API_KEY` in the `.env` file
+
+3. Update `SUPPORTED_LLM` in `services/llm_handler/__init__.py`:
+   ```python
+      SUPPORTED_LLM = {
+         "gemini": GeminiHandler(),
+         "deepseek": DeepseekHandler(),
+      }
+   ```
+
+4. In `api/ai.py`, change the handler selection to:
    ```python
    llm_handler = SUPPORTED_LLM.get("deepseek")
    ```
 
----
+## Project Structure
 
-## Potential Improvements
+```
+.
+├── backend/
+│   ├── app/
+│   │   ├── api/             # API routes
+│   │   │   ├── ai.py        # AI endpoints
+│   │   │   └── sales.py     # Sales data endpoints
+│   │   ├── models/          # Data models
+│   │   ├── services/        # Business logic
+│   │   │   └── llm_handler/ # AI model handlers
+│   │   └── data/            # Data files
+│   ├── main.py              # FastAPI application
+│   └── requirements.txt
+└── frontend/
+    ├── src/
+    │   ├── app/             # Next.js pages
+    │   ├── components/      # React components
+    │   ├── services/        # API services
+    │   ├── context/         # React context
+    │   └── lib/             # Utility functions
+    └── package.json
+```
 
-- Implement persistent chat history using localStorage or backend storage.
-- Improve chart visualizations with libraries like `recharts` or `chart.js`.
-- Adding testing and CI/CD pipeline.
+## API Documentation
 
----
+The backend provides the following main endpoints:
 
-## Feedback & Contact
+- `GET /api/sales` - Retrieve sales data
+- `POST /api/ai` - Get AI-powered insights
 
-Feel free to reach out if you have feedback or questions about this project.
+For detailed API documentation, visit `http://localhost:8000/docs` when the backend server is running.
 
+## Design Decisions
+
+1. **Frontend Architecture**
+   - **Modular File Structure**: Pages, components, and utilities are organized under separeted directory (check the [Project Structure](#project-structure))
+   - **Separation of Concerns**: API logic is abstracted into `api-service.ts`
+   - **Reusability**: Components like `MessageBubble`, `LoadingBubble`, `Sidebar`, `DealStatsCard`, etc are reusable and self-contained
+   - **Responsiveness**: Layout is mobile-first and adapts fluidly to screen sizes
+   - **User Experience**: Focused on clean interactions, visual clarity, and feedback (e.g., scroll behavior, loading indicators)
+
+2. **Backend Architecture**
+   - FastAPI for high performance and automatic API documentation
+   - Modular structure with clear separation of concerns
+   - Environment-based configuration
+
+3. **AI Integration**
+   - Google Gemini AI
+   - Easily extendable to support other AI models under `app/services/llm_handler/`
+   - Error handling and fallback mechanisms
