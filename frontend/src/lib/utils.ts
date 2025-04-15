@@ -47,3 +47,7 @@ export function sortData<T>(data: T[], key: keyof T, order: "asc" | "desc"): T[]
       : bVal.localeCompare(aVal)
   })
 }
+
+export function getPravatarURL(indicator: string): string {
+  return `https://i.pravatar.cc/100?u=${indicator}`
+}

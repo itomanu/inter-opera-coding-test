@@ -38,7 +38,7 @@ export function ClientsField({
 
 export type ClientItemProps = {
   text: string
-  overlap: boolean
+  overlap?: boolean
   background?: string | undefined
 }
 

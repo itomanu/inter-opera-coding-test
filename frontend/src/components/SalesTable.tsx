@@ -5,20 +5,22 @@ import { DealsField } from "./DealsField"
 import { ClientsField } from "./ClientsField"
 import { useMemo, useState } from "react"
 import { sortData } from "@/lib/utils"
+import { SalesAvatar } from "./SalesAvatar"
 
 export type SalesTableProps = {
   data: SalesRep[]
+  onSelectSales: (value: SalesRep) => void
 }
 
 export function SalesTable({
-  data
+  data, onSelectSales
 }: SalesTableProps) {
   const [sortKey, setSortKey] = useState<keyof SalesRep | null>(null)
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc")
 
   const dataSorted = useMemo(() => {
     if (!sortKey) return data
-  
+
     return sortData(data, sortKey, sortOrder)
   }, [data, sortKey, sortOrder])
 
@@ -55,18 +57,10 @@ export function SalesTable({
 
           <tbody className="divide-y divide-gray-100">
             {dataSorted.map((item) => (
-              <tr key={item.id} className="group hover:cursor-pointer">
+              <tr key={item.id} className="group hover:cursor-pointer" onClick={() => onSelectSales(item)}>
                 <td className="pl-6 p-3 group-hover:bg-gray-50">
                   <div className="flex items-center gap-3">
-                    <div className="min-h-[50px] min-w-[50px] overflow-hidden rounded-md">
-                      <img
-                        width={50}
-                        height={50}
-                        src={`https://i.pravatar.cc/50?u=${item.id}-${item.name}`}
-                        className="h-[50px] w-[50px] rounded-md"
-                        alt={item.name}
-                      />
-                    </div>
+                    <SalesAvatar name={`${item.id}-${item.name}`} />
                     <div>
                       <p className="font-medium text-gray-800 text-sm">
                         {item.name}
